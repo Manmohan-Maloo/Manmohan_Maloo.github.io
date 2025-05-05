@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm install --prefix portfolio-backend && cd ../Manmohan_Maloo.github.io && tsc -b && vite build",
+    "build": "npm install --prefix portfolio-backend && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
