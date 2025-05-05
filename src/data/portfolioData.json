@@ -1,0 +1,28 @@
+{
+  "projects": [
+    {
+      "id": "1",
+      "title": "Text-to-Image-Convertor",
+      "description": "A lightweight Text-to-Image Converter built with the MERN stack, Tailwind CSS, and Canvas API. Customize fonts, colors, and backgrounds to generate stylish text-based images for social media, branding, and more.",
+      "image": "/src/assets/ai.png",
+      "code": "https://github.com/Manmohan-Maloo/Text-to-Image-Convertor"
+    },
+    {
+      "id": "2",
+      "title": "fullstack-chatty",
+      "description": "A real-time chat application built with the MERN stack and Socket.IO. Features user authentication, live messaging, and a modern, responsive UI.",
+      "image": "/src/assets/chatty.png",
+      "code": "https://github.com/Manmohan-Maloo/fullstack-chatty",
+      "link": "https://fullstack-chatty-nh3r.onrender.com/login"
+    }
+  ],
+  "skills": [
+    { "id": "1", "name": "React" },
+    { "id": "2", "name": "TypeScript" },
+    { "id": "3", "name": "Node.js" },
+    { "id": "4", "name": "Express.js" },
+    { "id": "5", "name": "Tailwind CSS" },
+    { "id": "6", "name": "ShadCN" },
+    { "id": "7", "name": "MySQL" }
+  ]
+}
