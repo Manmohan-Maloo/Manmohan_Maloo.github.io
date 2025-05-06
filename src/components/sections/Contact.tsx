@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Button from "../common/Button";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -25,7 +26,7 @@ const Contact: React.FC = () => {
     setStatus({ message: "", isError: false });
 
     try {
-      const response = await fetch("http://localhost:5000/api/messages", {
+      const response = await fetch(`${API_BASE_URL}/api/messages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
