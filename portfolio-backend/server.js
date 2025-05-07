@@ -6,49 +6,54 @@ const validator = require("validator");
 const rateLimit = require("express-rate-limit");
 const nodemailer = require("nodemailer");
 const path = require("path");
+const https = require("https");
+const fs = require("fs");
 
-// Load environment variables
 dotenv.config();
 
-// Initialize Express
 const app = express();
 
-// Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin:
+      process.env.NODE_ENV === "production"
+        ? [
+            "https://manmohan-maloo-portfolio.onrender.com",
+            process.env.FRONTEND_URL,
+          ].filter(Boolean)
+        : true,
+    credentials: true,
+  })
+);
 app.use(express.json());
 
-// Rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100 // 100 requests per windowMs
+  max: 100, // 100 requests per windowMs
 });
 
-// Apply rate limiting only to messages endpoint
 app.use("/api/messages", limiter);
 
-// Define Message schema directly here to avoid potential import issues
 const messageSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
-    required: true
+    required: true,
   },
   message: {
     type: String,
-    required: true
+    required: true,
   },
   createdAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
+const Message = mongoose.model("Message", messageSchema);
 
-const Message = mongoose.model('Message', messageSchema);
-
-// MongoDB connection
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -57,7 +62,6 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Email setup
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -66,35 +70,27 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// API routes - Simple health check
 app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "Portfolio Backend is running!" });
 });
 
-// Contact form submission endpoint
 app.post("/api/messages", async (req, res) => {
   try {
     const { name, email, message } = req.body;
-
     // Validation
     if (!name || !email || !message) {
       return res.status(400).json({ error: "All fields are required" });
     }
-    
+
     if (!validator.isEmail(email)) {
       return res.status(400).json({ error: "Invalid email format" });
     }
-
-    // Create and save new message
     const newMessage = new Message({
       name,
       email,
       message,
     });
-
     await newMessage.save();
-
-    // Send email notification
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_USER,
@@ -107,9 +103,7 @@ app.post("/api/messages", async (req, res) => {
         <p>Sent on: ${new Date().toLocaleString()}</p>
       `,
     };
-
     await transporter.sendMail(mailOptions);
-
     res.status(201).json({ message: "Email sent successfully!" });
   } catch (error) {
     console.error("Error processing message:", error);
@@ -117,16 +111,38 @@ app.post("/api/messages", async (req, res) => {
   }
 });
 
-// Serve static files first
 app.use(express.static(path.join(__dirname, "../dist")));
 
-// Simple catch-all approach - no regex patterns that might trigger path-to-regexp errors
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "../dist", "index.html"));
 });
 
-// Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+
+if (process.env.NODE_ENV === "production" && process.env.USE_HTTPS === "true") {
+  try {
+    const privateKey = fs.readFileSync(
+      process.env.SSL_KEY_PATH || "key.pem",
+      "utf8"
+    );
+    const certificate = fs.readFileSync(
+      process.env.SSL_CERT_PATH || "cert.pem",
+      "utf8"
+    );
+    const credentials = { key: privateKey, cert: certificate };
+
+    const httpsServer = https.createServer(credentials, app);
+    httpsServer.listen(PORT, () => {
+      console.log(`HTTPS Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Failed to start HTTPS server:", error);
+    app.listen(PORT, () => {
+      console.log(`HTTP Server running on port ${PORT} (SSL failed)`);
+    });
+  }
+} else {
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`HTTP Server running on port ${PORT}`);
+  });
+}
