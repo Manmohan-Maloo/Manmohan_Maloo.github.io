@@ -20,6 +20,13 @@ const Footer: React.FC = () => {
           >
             LinkedIn
           </a>
+          <a
+            href="mailto:maloomanmohan810@gmail.com"
+            aria-label="Email"
+            className="hover:text-blue-400"
+          >
+            Email
+          </a>
         </div>
       </div>
     </footer>
