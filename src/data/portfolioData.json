@@ -17,12 +17,54 @@
     }
   ],
   "skills": [
-    { "id": "1", "name": "React" },
-    { "id": "2", "name": "TypeScript" },
-    { "id": "3", "name": "Node.js" },
-    { "id": "4", "name": "Express.js" },
-    { "id": "5", "name": "Tailwind CSS" },
-    { "id": "6", "name": "ShadCN" },
-    { "id": "7", "name": "MySQL" }
+    {
+      "id": "1",
+      "name": "React",
+      "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/react.svg",
+      "bgColor": "bg-blue-100",
+      "textColor": "text-blue-800"
+    },
+    {
+      "id": "2",
+      "name": "TypeScript",
+      "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/typescript.svg",
+      "bgColor": "bg-indigo-100",
+      "textColor": "text-indigo-800"
+    },
+    {
+      "id": "3",
+      "name": "Node.js",
+      "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/nodedotjs.svg",
+      "bgColor": "bg-green-100",
+      "textColor": "text-green-800"
+    },
+    {
+      "id": "4",
+      "name": "Express.js",
+      "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/express.svg",
+      "bgColor": "bg-gray-100",
+      "textColor": "text-gray-800"
+    },
+    {
+      "id": "5",
+      "name": "Tailwind CSS",
+      "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/tailwindcss.svg",
+      "bgColor": "bg-teal-100",
+      "textColor": "text-teal-800"
+    },
+    {
+      "id": "6",
+      "name": "ShadCN",
+      "logo": "https://ui.shadcn.com/favicon.ico",
+      "bgColor": "bg-purple-100",
+      "textColor": "text-purple-800"
+    },
+    {
+      "id": "7",
+      "name": "MySQL",
+      "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/mysql.svg",
+      "bgColor": "bg-orange-100",
+      "textColor": "text-orange-800"
+    }
   ]
 }

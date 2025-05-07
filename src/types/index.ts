@@ -10,6 +10,9 @@ export interface Project {
 export interface Skill {
   id: string;
   name: string;
+  logo: string;
+  bgColor: string;
+  textColor: string;
 }
 
 export interface PortfolioData {

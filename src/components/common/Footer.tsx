@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
             LinkedIn
           </a>
           <a
-            href={`mailto:${import.meta.env.REACT_APP_EMAIL}`}
+            href={`mailto:${import.meta.env.EMAIL_USER}`}
             aria-label="Email"
             className="hover:text-blue-400"
           >
