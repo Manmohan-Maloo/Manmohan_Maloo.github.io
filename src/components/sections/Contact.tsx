@@ -1,147 +1,131 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import Button from "../common/Button";
+import { emailAddress, emailHref } from "../../utils/contact";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [status, setStatus] = useState<{ message: string; isError: boolean }>({
-    message: "",
-    isError: false,
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setStatus({ message: "", isError: false });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus({ message: "", isError: false });
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/messages`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setStatus({ message: data.message, isError: false });
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        setStatus({
-          message: data.error || "Failed to send message",
-          isError: true,
-        });
-      }
-    } catch (error) {
-      setStatus({
-        message: "Network error. Please try again later.",
-        isError: true,
-      });
-    }
-  };
-
   return (
-    <section id="contact" className="py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl font-bold text-gray-800 mb-6 text-center"
-        >
-          Contact Me
-        </motion.h2>
-        <motion.form
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          onSubmit={handleSubmit}
-          className="max-w-lg mx-auto space-y-6"
-        >
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
+    <section
+      id="contact"
+      className="bg-surface-dark flex flex-col items-center justify-center pt-20 pb-10 md:pt-24 md:pb-12 relative overflow-hidden"
+    >
+      {/* Ambient glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[320px] bg-accent/8 rounded-full blur-[110px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-brand/6 rounded-full blur-[100px] pointer-events-none" />
+
+      <motion.div
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 w-[92%] sm:w-[82%] md:w-[72%] lg:w-[58%] mx-auto bg-surface-card border border-white/[0.08] rounded-2xl px-8 md:px-16 py-12 md:py-16 text-center"
+      >
+        {/* Label */}
+        <p className="text-accent-light text-sm font-mono tracking-widest mb-5">
+          let's talk
+        </p>
+
+        {/* Heading */}
+        <h2 className="text-4xl md:text-5xl font-bold text-text-base leading-tight mb-5">
+          Building something{" "}
+          <span className="bg-gradient-to-r from-accent-light to-accent bg-clip-text text-transparent">
+            great
+          </span>{" "}
+          <span className="text-yellow-400">?</span>
+        </h2>
+
+        {/* Subtitle */}
+        <p className="text-text-muted text-base md:text-lg max-w-md mx-auto mb-9 leading-relaxed">
+          I'm currently open to senior frontend &amp; full-stack roles,
+          freelance gigs, and interesting collaborations. Drop me a line.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+          <a
+            href={emailHref}
+            className="flex items-center gap-2.5 px-6 py-3 bg-accent text-white rounded-xl font-semibold text-sm transition-opacity duration-200 hover:opacity-90 w-full sm:w-auto justify-center"
+            aria-label={`Email ${emailAddress}`}
+          >
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-              required
-              aria-required="true"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+            {emailAddress}
+          </a>
+          <a
+            href="tel:+917232010574"
+            className="flex items-center gap-2.5 px-6 py-3 bg-white/[0.07] border border-white/[0.10] text-text-base rounded-xl font-semibold text-sm w-full sm:w-auto justify-center"
+          >
+            <svg
+              className="w-4 h-4 text-accent-light"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-              required
-              aria-required="true"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium text-gray-700"
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              />
+            </svg>
+            +91 72320 10574
+          </a>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-white/[0.07] mb-7" />
+
+        {/* Meta info */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-5 text-sm text-text-muted">
+          <span className="flex items-center gap-2">
+            <svg
+              className="w-4 h-4 text-accent/70"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows={4}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-              required
-              aria-required="true"
-            ></textarea>
-          </div>
-          <Button type="submit" ariaLabel="Submit contact form">
-            Send Message
-          </Button>
-          {status.message && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-              className={`text-center ${
-                status.isError ? "text-red-600" : "text-green-600"
-              }`}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
+            Ahmedabad, India
+          </span>
+          <span className="flex items-center gap-2">
+            <svg
+              className="w-4 h-4 text-accent/70"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              {status.message}
-            </motion.div>
-          )}
-        </motion.form>
-      </div>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+            Open to Remote
+          </span>
+        </div>
+      </motion.div>
     </section>
   );
 };

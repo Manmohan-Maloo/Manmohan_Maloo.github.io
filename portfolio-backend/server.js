@@ -8,57 +8,36 @@ const nodemailer = require("nodemailer");
 const path = require("path");
 const https = require("https");
 const fs = require("fs");
+const Message = require("./models/Message");
 
 dotenv.config();
 
 const app = express();
+const isProduction = process.env.NODE_ENV === "production";
+const allowedOrigins = [
+  "https://manmohan-maloo-portfolio.onrender.com",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
 
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV === "production"
-        ? [
-            "https://manmohan-maloo-portfolio.onrender.com",
-            process.env.FRONTEND_URL,
-          ].filter(Boolean)
-        : true,
+    origin: isProduction ? allowedOrigins : true,
     credentials: true,
   })
 );
-app.use(express.json());
+app.use(express.json({ limit: "16kb" }));
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // 100 requests per windowMs
+  windowMs: 15 * 60 * 1000,
+  max: 20,
+  standardHeaders: true,
+  legacyHeaders: false,
 });
 
 app.use("/api/messages", limiter);
 
-const messageSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-  },
-  message: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-});
-const Message = mongoose.model("Message", messageSchema);
-
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
@@ -74,10 +53,15 @@ app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "Portfolio Backend is running!" });
 });
 
+const sanitizeText = (value, maxLength) =>
+  validator.escape(String(value ?? "").trim().slice(0, maxLength));
+
 app.post("/api/messages", async (req, res) => {
   try {
-    const { name, email, message } = req.body;
-    // Validation
+    const name = sanitizeText(req.body.name, 80);
+    const email = String(req.body.email ?? "").trim().toLowerCase();
+    const message = sanitizeText(req.body.message, 2000);
+
     if (!name || !email || !message) {
       return res.status(400).json({ error: "All fields are required" });
     }
@@ -85,6 +69,7 @@ app.post("/api/messages", async (req, res) => {
     if (!validator.isEmail(email)) {
       return res.status(400).json({ error: "Invalid email format" });
     }
+
     const newMessage = new Message({
       name,
       email,
@@ -99,7 +84,8 @@ app.post("/api/messages", async (req, res) => {
         <h2>New Contact Form Portfolio</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong> ${message}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
         <p>Sent on: ${new Date().toLocaleString()}</p>
       `,
     };
@@ -119,7 +105,7 @@ app.use((req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-if (process.env.NODE_ENV === "production" && process.env.USE_HTTPS === "true") {
+if (isProduction && process.env.USE_HTTPS === "true") {
   try {
     const privateKey = fs.readFileSync(
       process.env.SSL_KEY_PATH || "key.pem",

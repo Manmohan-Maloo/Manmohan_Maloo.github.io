@@ -1,85 +1,181 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
+import { useTheme } from "../../hooks/useTheme";
+
+const navItems = ["About", "Skills", "Experience", "Projects", "Contact"];
 
 const Navbar: React.FC = () => {
+  const { theme } = useTheme();
+  const isLight = theme === "light";
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const navItems = ["About", "Projects", "Skills", "Resume", "Contact"];
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold text-blue-600">
-              Manmohan Maloo
+    <>
+      {/* Floating navbar */}
+      <nav
+        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-5xl rounded-2xl transition-all duration-300 backdrop-blur-xl ${
+          isLight
+            ? scrolled
+              ? "bg-white/80 border border-black/[0.10] shadow-xl shadow-black/10"
+              : "bg-white/50 border border-black/[0.07]"
+            : scrolled
+              ? "bg-surface-dark/80 border border-white/[0.12] shadow-2xl shadow-black/40"
+              : "bg-surface-dark/50 border border-white/[0.07]"
+        }`}
+      >
+        <div className="px-4 sm:px-5">
+          <div className="flex justify-between items-center h-14">
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-2.5 flex-shrink-0">
+              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-accent text-white text-[11px] font-bold">
+                &lt;/&gt;
+              </span>
+              <span className="text-base font-bold text-text-base tracking-tight">
+                Manmohan<span className="text-accent">.</span>
+              </span>
             </Link>
-          </div>
-          <div className="hidden md:flex items-center space-x-4">
-            {navItems.map((item) => (
+
+            {/* Desktop links */}
+            <div className="hidden md:flex items-center gap-0.5">
+              {navItems.map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-text-muted hover:text-brand-bright px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+
+            {/* Desktop right */}
+            <div className="hidden md:flex items-center gap-3">
+              <ThemeToggle />
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
+                href="#contact"
+                className="px-4 py-2 bg-accent text-white rounded-xl text-sm font-semibold hover:opacity-90 transition-opacity duration-200"
               >
-                {item}
+                Hire me
               </a>
-            ))}
-          </div>
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-blue-600 focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            </div>
+
+            {/* Mobile right */}
+            <div className="flex md:hidden items-center gap-2">
+              <ThemeToggle />
+              <button
+                onClick={() => setIsOpen(true)}
+                className="p-2 rounded-lg text-text-muted hover:text-brand-bright hover:bg-white/[0.06] transition-colors duration-200"
+                aria-label="Open menu"
               >
-                {isOpen ? (
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile popup menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm md:hidden"
+            />
+
+            {/* Panel */}
+            <motion.div
+              key="panel"
+              initial={{ opacity: 0, scale: 0.94, y: -16 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.94, y: -16 }}
+              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[70] w-[85%] max-w-sm md:hidden bg-surface-card border border-white/[0.10] rounded-2xl p-6 shadow-2xl shadow-black/60"
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setIsOpen(false)}
+                className="absolute top-4 right-4 p-1.5 rounded-lg text-text-muted hover:text-text-base hover:bg-white/[0.06] transition-colors duration-200"
+                aria-label="Close menu"
+              >
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
                     d="M6 18L18 6M6 6l12 12"
                   />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  />
-                )}
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      {isOpen && (
-        <motion.div
-          initial={{ height: 0 }}
-          animate={{ height: "auto" }}
-          className="md:hidden"
-        >
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((item) => (
+                </svg>
+              </button>
+
+              <p className="text-[11px] font-semibold text-text-subtle uppercase tracking-widest mb-4">
+                Navigation
+              </p>
+
+              <nav className="space-y-1">
+                {navItems.map((item) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center px-3 py-3 rounded-xl text-base font-medium text-text-muted hover:text-text-base hover:bg-white/[0.06] transition-all duration-200"
+                  >
+                    {item}
+                  </a>
+                ))}
+              </nav>
+
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium"
+                href="#contact"
                 onClick={() => setIsOpen(false)}
+                className="mt-5 flex items-center justify-center w-full py-3 bg-accent text-white rounded-xl text-sm font-semibold hover:opacity-90 transition-opacity duration-200"
               >
-                {item}
+                Hire me
               </a>
-            ))}
-          </div>
-        </motion.div>
-      )}
-    </nav>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

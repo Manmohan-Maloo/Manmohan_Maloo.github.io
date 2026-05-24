@@ -1,70 +1,512 @@
 {
-  "projects": [
+  "hero": {
+    "name": "Manmohan Maloo",
+    "title": "Senior System Developer",
+    "subtitle": "Frontend-focused Full Stack Developer",
+    "description": "Building scalable, production-ready web applications with deep expertise in Nuxt.js, Vue.js 3, React.js, and TypeScript. Currently leading frontend architecture at Crew.inc with core modules live in production.",
+    "stats": [
+      { "id": "1", "value": "350+", "label": "APIs Integrated" },
+      { "id": "2", "value": "10+", "label": "Projects Built" },
+      { "id": "3", "value": "1+", "label": "Year Experience" }
+    ],
+    "location": "Ahmedabad, India",
+    "availability": "Open to Remote"
+  },
+  "about": {
+    "summary": "Full Stack Developer with proven expertise in frontend architecture, REST API integration, and translating Figma designs into pixel-perfect, responsive interfaces. I currently lead frontend development of a live HRIS platform at Crew.inc — handling employee records, attendance, RBAC, and dashboards with 350+ integrated APIs.\n\nWhile my primary strength is frontend — component design, state management, performance, and responsive UI — I actively participate in backend discussions, API contract design, and business logic planning. I bring a full-cycle perspective that helps bridge the gap between design intent and engineering execution.",
+    "highlights": [
+      "Frontend Architecture & Component Design",
+      "350+ REST API Integrations",
+      "HRIS Platform Live in Production",
+      "RBAC & Route-level Auth Guards",
+      "Figma → Pixel-Perfect UI",
+      "Google Analytics GA4 Setup",
+      "Module-based Folder Architecture",
+      "Open to Remote Opportunities"
+    ]
+  },
+  "experience": [
     {
       "id": "1",
-      "title": "Text-to-Image-Convertor",
-      "description": "A lightweight Text-to-Image Converter built with the MERN stack, Tailwind CSS, and Canvas API. Customize fonts, colors, and backgrounds to generate stylish text-based images for social media, branding, and more.",
-      "image": "ai.png",
-      "code": "https://github.com/Manmohan-Maloo/Text-to-Image-Convertor"
+      "role": "Senior System Developer",
+      "company": "Crew.inc",
+      "companyUrl": "https://crew.inc",
+      "location": "Ahmedabad, Gujarat",
+      "period": "Jan 2026 – Present",
+      "current": true,
+      "description": "Leading frontend development of a scalable HRIS and Employee Management Platform built on Nuxt.js / Vue.js. Core modules are live in production, handling organizational workforce operations.",
+      "bullets": [
+        "Architected scalable frontend using Nuxt.js, Vue.js 3, TypeScript, and Tailwind CSS with a module-based folder structure for maintainability",
+        "Implemented Role-Based Access Control (RBAC) and route-level authentication guards",
+        "Integrated 350+ REST APIs with structured Pinia state management and business logic layers",
+        "Built interactive dashboards and data visualizations using Nuxt UI and Nuxt Chart",
+        "Integrated Google Maps API for location-based employee and branch functionalities",
+        "Translated Figma designs into pixel-perfect, responsive, production-ready components",
+        "Set up Google Analytics (GA4) for full web analytics, user behavior tracking, and performance insights",
+        "Managed Git & GitLab workflows — branching, MRs, code reviews, and CI/CD coordination",
+        "Collaborated directly with backend team to define and align API contracts and data schemas"
+      ],
+      "tags": [
+        "Nuxt.js",
+        "Vue.js 3",
+        "TypeScript",
+        "Tailwind CSS",
+        "Pinia",
+        "RBAC",
+        "GA4",
+        "GitLab"
+      ]
     },
     {
       "id": "2",
-      "title": "fullstack-chatty",
-      "description": "A real-time chat application built with the MERN stack and Socket.IO. Features user authentication, live messaging, and a modern, responsive UI.",
-      "image": "chatty.png",
-      "code": "https://github.com/Manmohan-Maloo/fullstack-chatty",
-      "link": "https://fullstack-chatty-nh3r.onrender.com/login"
-    }
-  ],
-  "skills": [
-    {
-      "id": "1",
-      "name": "React",
-      "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/react.svg",
-      "bgColor": "bg-blue-100",
-      "textColor": "text-blue-800"
-    },
-    {
-      "id": "2",
-      "name": "TypeScript",
-      "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/typescript.svg",
-      "bgColor": "bg-indigo-100",
-      "textColor": "text-indigo-800"
+      "role": "Front End Developer",
+      "company": "Adeshwar Marketing",
+      "location": "Ahmedabad, Gujarat",
+      "period": "May 2025 – Jan 2026",
+      "current": false,
+      "description": "Worked across multiple live client projects while spearheading development of Crew.inc — an HRIS platform built with Nuxt.js and Vue.js.",
+      "bullets": [
+        "Built and shipped features across projects using PHP, Nuxt.js, React.js, React Native, and Webflow",
+        "Led frontend development of the Crew.inc HRIS platform, now partially deployed to production",
+        "Improved team coordination, code quality, and UI/UX consistency across multiple concurrent projects",
+        "Explored and integrated diverse web technologies to continuously expand technical proficiency"
+      ],
+      "tags": [
+        "React.js",
+        "Nuxt.js",
+        "Vue.js",
+        "PHP",
+        "React Native",
+        "Webflow"
+      ]
     },
     {
       "id": "3",
-      "name": "Node.js",
-      "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/nodedotjs.svg",
-      "bgColor": "bg-green-100",
-      "textColor": "text-green-800"
+      "role": "Full Stack Developer Intern",
+      "company": "Syndell Technology Pvt. Ltd.",
+      "location": "Ahmedabad, Gujarat",
+      "period": "Jan 2025 – Apr 2025",
+      "current": false,
+      "description": "Developed full-stack features using the MERN stack with a focus on responsive UI and RESTful API integration.",
+      "bullets": [
+        "Developed full-stack features using the MERN stack (MongoDB, Express.js, React.js, Node.js)",
+        "Built responsive React UIs and integrated RESTful backend APIs with Express and MongoDB",
+        "Implemented JWT-based authentication, CRUD operations, and Mongoose data models",
+        "Used Git & GitHub for version control, PR reviews, and collaborative development"
+      ],
+      "tags": ["React.js", "Node.js", "MongoDB", "Express.js", "JWT"]
     },
     {
       "id": "4",
-      "name": "Express.js",
-      "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/express.svg",
-      "bgColor": "bg-gray-100",
-      "textColor": "text-gray-800"
+      "role": "Data Science Intern",
+      "company": "Infividhya Pvt. Ltd.",
+      "location": "Ahmedabad, Gujarat",
+      "period": "Jun 2024 – Jul 2024",
+      "current": false,
+      "description": "Applied Python data science tools for analysis and visualization on real-world datasets.",
+      "bullets": [
+        "Applied Python (Pandas, Matplotlib, NumPy) for data preprocessing, analysis, and visualization",
+        "Worked with real-world datasets to extract business insights and present findings"
+      ],
+      "tags": ["Python", "Pandas", "NumPy", "Matplotlib"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "title": "Chatify",
+      "description": "Real-time full-stack chat application with Socket.io-based messaging, JWT authentication, user presence indicators, and private/group chat rooms.",
+      "image": "chatty.png",
+      "tags": ["React.js", "Node.js", "Socket.io", "MongoDB", "JWT"],
+      "code": "https://github.com/Manmohan-Maloo/fullstack-chatty",
+      "link": "https://fullstack-chatty-nh3r.onrender.com/login",
+      "gradient": "from-blue-500 to-cyan-500"
+    },
+    {
+      "id": "2",
+      "title": "Imagify – AI Image Generator",
+      "description": "AI-powered image generation app integrating the OpenAI DALL-E API. Features prompt-based generation, history tracking, and image download.",
+      "image": "ai.png",
+      "tags": ["React.js", "Node.js", "Express.js", "OpenAI API"],
+      "code": "https://github.com/Manmohan-Maloo/Text-to-Image-Convertor",
+      "gradient": "from-purple-500 to-pink-500"
+    },
+    {
+      "id": "3",
+      "title": "Coaching-Guru",
+      "description": "AI-powered adaptive learning platform that generates personalized course content tailored to individual learner goals and knowledge levels using LLM APIs.",
+      "image": "coaching_guru.jpeg",
+      "tags": ["React.js", "Nuxt.js", "Node.js", "LLM API"],
+      "code": "https://github.com/Manmohan-Maloo",
+      "gradient": "from-emerald-500 to-teal-500"
+    },
+    {
+      "id": "4",
+      "title": "Text-to-Image Converter",
+      "description": "Lightweight converter built with the MERN stack, Tailwind CSS, and Canvas API. Customize fonts, colors, and backgrounds to generate stylish text-based images.",
+      "image": "text_img_convertor.jpeg",
+      "tags": ["MERN", "Canvas API", "Tailwind CSS"],
+      "code": "https://github.com/Manmohan-Maloo/Text-to-Image-Convertor",
+      "gradient": "from-orange-500 to-red-500"
     },
     {
       "id": "5",
-      "name": "Tailwind CSS",
-      "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/tailwindcss.svg",
-      "bgColor": "bg-teal-100",
-      "textColor": "text-teal-800"
+      "title": "Portfolio Website",
+      "description": "Personal developer portfolio with project showcases, skills section, animated sections, and contact form — fully responsive and performance-optimized.",
+      "image": "portfolio.jpeg",
+      "tags": ["React.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      "code": "https://github.com/Manmohan-Maloo/Manmohan_Maloo.github.io",
+      "gradient": "from-indigo-500 to-violet-500"
+    }
+  ],
+  "skillCategories": [
+    {
+      "id": "1",
+      "name": "Languages",
+      "icon": "💻",
+      "skills": [
+        {
+          "id": "1",
+          "name": "JavaScript",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/javascript.svg",
+          "bgColor": "bg-yellow-100",
+          "textColor": "text-yellow-800"
+        },
+        {
+          "id": "2",
+          "name": "TypeScript",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/typescript.svg",
+          "bgColor": "bg-indigo-100",
+          "textColor": "text-indigo-800"
+        },
+        {
+          "id": "3",
+          "name": "Python",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/python.svg",
+          "bgColor": "bg-blue-100",
+          "textColor": "text-blue-800"
+        },
+        {
+          "id": "4",
+          "name": "PHP",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/php.svg",
+          "bgColor": "bg-violet-100",
+          "textColor": "text-violet-800"
+        },
+        {
+          "id": "5",
+          "name": "HTML5",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/html5.svg",
+          "bgColor": "bg-orange-100",
+          "textColor": "text-orange-800"
+        },
+        {
+          "id": "6",
+          "name": "CSS3",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/css3.svg",
+          "bgColor": "bg-blue-100",
+          "textColor": "text-blue-800"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Frontend Frameworks",
+      "icon": "🎨",
+      "skills": [
+        {
+          "id": "1",
+          "name": "Nuxt.js",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/nuxtdotjs.svg",
+          "bgColor": "bg-emerald-100",
+          "textColor": "text-emerald-800"
+        },
+        {
+          "id": "2",
+          "name": "Vue.js 3",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/vuedotjs.svg",
+          "bgColor": "bg-green-100",
+          "textColor": "text-green-800"
+        },
+        {
+          "id": "3",
+          "name": "React.js",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/react.svg",
+          "bgColor": "bg-blue-100",
+          "textColor": "text-blue-800"
+        },
+        {
+          "id": "4",
+          "name": "React Native",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/react.svg",
+          "bgColor": "bg-cyan-100",
+          "textColor": "text-cyan-800"
+        },
+        {
+          "id": "5",
+          "name": "Tailwind CSS",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/tailwindcss.svg",
+          "bgColor": "bg-teal-100",
+          "textColor": "text-teal-800"
+        },
+        {
+          "id": "6",
+          "name": "ShadCN UI",
+          "logo": "https://ui.shadcn.com/favicon.ico",
+          "bgColor": "bg-purple-100",
+          "textColor": "text-purple-800"
+        },
+        {
+          "id": "7",
+          "name": "Nuxt UI",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/nuxtdotjs.svg",
+          "bgColor": "bg-emerald-100",
+          "textColor": "text-emerald-800"
+        },
+        {
+          "id": "8",
+          "name": "Webflow",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/webflow.svg",
+          "bgColor": "bg-blue-100",
+          "textColor": "text-blue-800"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Backend / Runtime",
+      "icon": "⚙️",
+      "skills": [
+        {
+          "id": "1",
+          "name": "Node.js",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/nodedotjs.svg",
+          "bgColor": "bg-green-100",
+          "textColor": "text-green-800"
+        },
+        {
+          "id": "2",
+          "name": "Express.js",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/express.svg",
+          "bgColor": "bg-gray-100",
+          "textColor": "text-gray-800"
+        },
+        {
+          "id": "3",
+          "name": "REST API Design",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/postman.svg",
+          "bgColor": "bg-amber-100",
+          "textColor": "text-amber-800"
+        },
+        {
+          "id": "4",
+          "name": "REST API Integration",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/postman.svg",
+          "bgColor": "bg-amber-100",
+          "textColor": "text-amber-800"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Databases",
+      "icon": "🗄️",
+      "skills": [
+        {
+          "id": "1",
+          "name": "MongoDB",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/mongodb.svg",
+          "bgColor": "bg-green-100",
+          "textColor": "text-green-800"
+        },
+        {
+          "id": "2",
+          "name": "MySQL",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/mysql.svg",
+          "bgColor": "bg-orange-100",
+          "textColor": "text-orange-800"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Google Services",
+      "icon": "☁️",
+      "skills": [
+        {
+          "id": "1",
+          "name": "Google Maps API",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/googlemaps.svg",
+          "bgColor": "bg-red-100",
+          "textColor": "text-red-800"
+        },
+        {
+          "id": "2",
+          "name": "Google Analytics (GA4)",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/googleanalytics.svg",
+          "bgColor": "bg-yellow-100",
+          "textColor": "text-yellow-800"
+        },
+        {
+          "id": "3",
+          "name": "Firebase Console",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/firebase.svg",
+          "bgColor": "bg-yellow-100",
+          "textColor": "text-yellow-800"
+        },
+        {
+          "id": "4",
+          "name": "Google Cloud Console",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/googlecloud.svg",
+          "bgColor": "bg-blue-100",
+          "textColor": "text-blue-800"
+        }
+      ]
     },
     {
       "id": "6",
-      "name": "ShadCN",
-      "logo": "https://ui.shadcn.com/favicon.ico",
-      "bgColor": "bg-purple-100",
-      "textColor": "text-purple-800"
+      "name": "Dev Tools",
+      "icon": "🛠️",
+      "skills": [
+        {
+          "id": "1",
+          "name": "Git",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/git.svg",
+          "bgColor": "bg-orange-100",
+          "textColor": "text-orange-800"
+        },
+        {
+          "id": "2",
+          "name": "GitHub",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/github.svg",
+          "bgColor": "bg-gray-100",
+          "textColor": "text-gray-800"
+        },
+        {
+          "id": "3",
+          "name": "GitLab",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/gitlab.svg",
+          "bgColor": "bg-orange-100",
+          "textColor": "text-orange-800"
+        },
+        {
+          "id": "4",
+          "name": "VS Code",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/visualstudiocode.svg",
+          "bgColor": "bg-blue-100",
+          "textColor": "text-blue-800"
+        },
+        {
+          "id": "5",
+          "name": "Cursor",
+          "logo": "",
+          "bgColor": "bg-gray-100",
+          "textColor": "text-gray-800"
+        },
+        {
+          "id": "6",
+          "name": "Postman",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/postman.svg",
+          "bgColor": "bg-orange-100",
+          "textColor": "text-orange-800"
+        },
+        {
+          "id": "7",
+          "name": "Render",
+          "logo": "",
+          "bgColor": "bg-purple-100",
+          "textColor": "text-purple-800"
+        },
+        {
+          "id": "8",
+          "name": "Figma",
+          "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/figma.svg",
+          "bgColor": "bg-purple-100",
+          "textColor": "text-purple-800"
+        }
+      ]
     },
     {
       "id": "7",
-      "name": "MySQL",
-      "logo": "https://cdn.jsdelivr.net/npm/simple-icons@13.1.0/icons/mysql.svg",
-      "bgColor": "bg-orange-100",
-      "textColor": "text-orange-800"
+      "name": "Architecture",
+      "icon": "🏗️",
+      "skills": [
+        {
+          "id": "1",
+          "name": "RBAC",
+          "logo": "",
+          "bgColor": "bg-red-100",
+          "textColor": "text-red-800"
+        },
+        {
+          "id": "2",
+          "name": "Module-based folders",
+          "logo": "",
+          "bgColor": "bg-blue-100",
+          "textColor": "text-blue-800"
+        },
+        {
+          "id": "3",
+          "name": "MVC",
+          "logo": "",
+          "bgColor": "bg-green-100",
+          "textColor": "text-green-800"
+        },
+        {
+          "id": "4",
+          "name": "State management",
+          "logo": "",
+          "bgColor": "bg-purple-100",
+          "textColor": "text-purple-800"
+        },
+        {
+          "id": "5",
+          "name": "Component design",
+          "logo": "",
+          "bgColor": "bg-teal-100",
+          "textColor": "text-teal-800"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "name": "CS Fundamentals",
+      "icon": "📚",
+      "skills": [
+        {
+          "id": "1",
+          "name": "DSA",
+          "logo": "",
+          "bgColor": "bg-indigo-100",
+          "textColor": "text-indigo-800"
+        },
+        {
+          "id": "2",
+          "name": "DBMS",
+          "logo": "",
+          "bgColor": "bg-blue-100",
+          "textColor": "text-blue-800"
+        },
+        {
+          "id": "3",
+          "name": "OOP",
+          "logo": "",
+          "bgColor": "bg-green-100",
+          "textColor": "text-green-800"
+        },
+        {
+          "id": "4",
+          "name": "Operating Systems",
+          "logo": "",
+          "bgColor": "bg-gray-100",
+          "textColor": "text-gray-800"
+        }
+      ]
     }
+  ],
+  "certifications": [
+    "Machine Learning Training – Python, Scikit-learn, and data pipelines",
+    "Internal SIH Hackathon (College Level) – Built GemLoot, a real-time product price comparison API",
+    "Hack This Fall – MLH (Karnavati University) – AI-powered crack detection system using computer vision"
   ]
 }
