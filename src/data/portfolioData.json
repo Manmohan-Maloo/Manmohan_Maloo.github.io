@@ -34,17 +34,11 @@
       "location": "Ahmedabad, Gujarat",
       "period": "Jan 2026 – Present",
       "current": true,
-      "description": "Leading frontend development of a scalable HRIS and Employee Management Platform built on Nuxt.js / Vue.js. Core modules are live in production, handling organizational workforce operations.",
+      "description": "Leading frontend of a live HRIS platform — org management, attendance, RBAC, and dashboards used by real organisations daily.",
       "bullets": [
-        "Architected scalable frontend using Nuxt.js, Vue.js 3, TypeScript, and Tailwind CSS with a module-based folder structure for maintainability",
-        "Implemented Role-Based Access Control (RBAC) and route-level authentication guards",
-        "Integrated 350+ REST APIs with structured Pinia state management and business logic layers",
-        "Built interactive dashboards and data visualizations using Nuxt UI and Nuxt Chart",
-        "Integrated Google Maps API for location-based employee and branch functionalities",
-        "Translated Figma designs into pixel-perfect, responsive, production-ready components",
-        "Set up Google Analytics (GA4) for full web analytics, user behavior tracking, and performance insights",
-        "Managed Git & GitLab workflows — branching, MRs, code reviews, and CI/CD coordination",
-        "Collaborated directly with backend team to define and align API contracts and data schemas"
+        "Architected Nuxt.js / Vue.js 3 frontend with module-based structure, RBAC, and route-level auth guards",
+        "Integrated 350+ REST APIs with Pinia state management, interactive dashboards, and GA4 analytics",
+        "Delivered pixel-perfect Figma-to-production components and aligned API contracts with the backend team"
       ],
       "tags": [
         "Nuxt.js",
@@ -64,12 +58,11 @@
       "location": "Ahmedabad, Gujarat",
       "period": "May 2025 – Jan 2026",
       "current": false,
-      "description": "Worked across multiple live client projects while spearheading development of Crew.inc — an HRIS platform built with Nuxt.js and Vue.js.",
+      "description": "Shipped features across multiple live client projects while bootstrapping the Crew.inc HRIS frontend from scratch.",
       "bullets": [
-        "Built and shipped features across projects using PHP, Nuxt.js, React.js, React Native, and Webflow",
-        "Led frontend development of the Crew.inc HRIS platform, now partially deployed to production",
-        "Improved team coordination, code quality, and UI/UX consistency across multiple concurrent projects",
-        "Explored and integrated diverse web technologies to continuously expand technical proficiency"
+        "Delivered across React.js, Nuxt.js, React Native, PHP, and Webflow for concurrent client projects",
+        "Led Crew.inc HRIS frontend architecture — now live in production as Senior System Developer",
+        "Maintained UI/UX consistency and code quality standards across the team"
       ],
       "tags": [
         "React.js",
@@ -87,12 +80,11 @@
       "location": "Ahmedabad, Gujarat",
       "period": "Jan 2025 – Apr 2025",
       "current": false,
-      "description": "Developed full-stack features using the MERN stack with a focus on responsive UI and RESTful API integration.",
+      "description": "Built full-stack MERN features with REST APIs, JWT auth, and responsive React UIs.",
       "bullets": [
-        "Developed full-stack features using the MERN stack (MongoDB, Express.js, React.js, Node.js)",
-        "Built responsive React UIs and integrated RESTful backend APIs with Express and MongoDB",
-        "Implemented JWT-based authentication, CRUD operations, and Mongoose data models",
-        "Used Git & GitHub for version control, PR reviews, and collaborative development"
+        "Developed end-to-end features — React UI, Express APIs, MongoDB schemas, and Mongoose models",
+        "Implemented JWT authentication, CRUD operations, and role-based data access patterns",
+        "Managed Git/GitHub workflows: branching, PR reviews, and collaborative feature delivery"
       ],
       "tags": ["React.js", "Node.js", "MongoDB", "Express.js", "JWT"]
     },
@@ -103,10 +95,10 @@
       "location": "Ahmedabad, Gujarat",
       "period": "Jun 2024 – Jul 2024",
       "current": false,
-      "description": "Applied Python data science tools for analysis and visualization on real-world datasets.",
+      "description": "Applied Python data science tools on real-world datasets to surface business insights.",
       "bullets": [
-        "Applied Python (Pandas, Matplotlib, NumPy) for data preprocessing, analysis, and visualization",
-        "Worked with real-world datasets to extract business insights and present findings"
+        "Used Pandas, NumPy, and Matplotlib for data preprocessing, analysis, and visualization",
+        "Extracted actionable insights from real-world datasets and presented findings to stakeholders"
       ],
       "tags": ["Python", "Pandas", "NumPy", "Matplotlib"]
     }
@@ -120,7 +112,7 @@
       "tags": ["React.js", "Node.js", "Socket.io", "MongoDB", "JWT"],
       "code": "https://github.com/Manmohan-Maloo/fullstack-chatty",
       "link": "https://fullstack-chatty-nh3r.onrender.com/login",
-      "gradient": "from-blue-500 to-cyan-500"
+      "color": "#3b82f6"
     },
     {
       "id": "2",
@@ -129,7 +121,7 @@
       "image": "ai.png",
       "tags": ["React.js", "Node.js", "Express.js", "OpenAI API"],
       "code": "https://github.com/Manmohan-Maloo/Text-to-Image-Convertor",
-      "gradient": "from-purple-500 to-pink-500"
+      "color": "#8b5cf6"
     },
     {
       "id": "3",
@@ -138,7 +130,7 @@
       "image": "coaching_guru.jpeg",
       "tags": ["React.js", "Nuxt.js", "Node.js", "LLM API"],
       "code": "https://github.com/Manmohan-Maloo",
-      "gradient": "from-emerald-500 to-teal-500"
+      "color": "#10b981"
     },
     {
       "id": "4",
@@ -147,7 +139,7 @@
       "image": "text_img_convertor.jpeg",
       "tags": ["MERN", "Canvas API", "Tailwind CSS"],
       "code": "https://github.com/Manmohan-Maloo/Text-to-Image-Convertor",
-      "gradient": "from-orange-500 to-red-500"
+      "color": "#f97316"
     },
     {
       "id": "5",
@@ -156,7 +148,7 @@
       "image": "portfolio.jpeg",
       "tags": ["React.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
       "code": "https://github.com/Manmohan-Maloo/Manmohan_Maloo.github.io",
-      "gradient": "from-indigo-500 to-violet-500"
+      "color": "#6366f1"
     }
   ],
   "skillCategories": [

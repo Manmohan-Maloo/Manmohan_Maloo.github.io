@@ -1,16 +1,14 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTheme } from "../../hooks/useTheme";
 
+const MoonIcon = () => (
+  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+  </svg>
+);
+
 const SunIcon = () => (
-  <svg
-    width="11"
-    height="11"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-  >
+  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
     <circle cx="12" cy="12" r="5" />
     <line x1="12" y1="1" x2="12" y2="3" />
     <line x1="12" y1="21" x2="12" y2="23" />
@@ -23,62 +21,62 @@ const SunIcon = () => (
   </svg>
 );
 
-const MoonIcon = () => (
-  <svg
-    width="11"
-    height="11"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-  >
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-  </svg>
-);
-
 const ThemeToggle: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
 
-  return (
-    <motion.button
-      onClick={toggleTheme}
-      whileTap={{ scale: 0.88 }}
-      className="relative flex items-center w-12 h-6 rounded-full p-0.5 border transition-colors duration-300"
-      style={{
-        background: isDark ? "rgba(124,58,237,0.15)" : "rgba(251,191,36,0.15)",
-        borderColor: isDark ? "rgba(124,58,237,0.3)" : "rgba(251,191,36,0.4)",
-      }}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-    >
-      {/* Moon icon on left track */}
-      <span
-        className="absolute left-1 text-brand-bright"
-        style={{ opacity: isDark ? 0.9 : 0.3 }}
-      >
-        <MoonIcon />
-      </span>
-      {/* Sun icon on right track */}
-      <span
-        className="absolute right-1 text-amber-400"
-        style={{ opacity: isDark ? 0.3 : 0.9 }}
-      >
-        <SunIcon />
-      </span>
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    toggleTheme(
+      Math.round(rect.left + rect.width / 2),
+      Math.round(rect.top + rect.height / 2),
+    );
+  };
 
-      {/* Thumb */}
+  return (
+    <button
+      onClick={handleClick}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      className="relative flex items-center w-14 h-7 rounded-full p-1 outline-none focus-visible:ring-2 focus-visible:ring-brand transition-colors duration-300"
+      style={{
+        background: isDark ? "#261c42" : "#f0e4d4",
+        border: `1.5px solid ${isDark ? "rgba(180,157,250,0.30)" : "rgba(109,40,217,0.28)"}`,
+      }}
+    >
       <motion.div
-        animate={{ x: isDark ? 0 : 24 }}
+        animate={{ x: isDark ? 0 : 28 }}
         transition={{ type: "spring", stiffness: 420, damping: 28 }}
-        className="w-5 h-5 rounded-full z-10"
+        className="w-5 h-5 rounded-full flex items-center justify-center shadow-sm"
         style={{
-          background: isDark
-            ? "linear-gradient(135deg,#7c3aed,#06b6d4)"
-            : "linear-gradient(135deg,#f59e0b,#ef4444)",
+          background: isDark ? "#a78bfa" : "#7c3aed",
+          color: "#fff",
         }}
-      />
-    </motion.button>
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          {isDark ? (
+            <motion.span
+              key="moon"
+              initial={{ opacity: 0, rotate: -45, scale: 0.6 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              exit={{ opacity: 0, rotate: 45, scale: 0.6 }}
+              transition={{ duration: 0.18 }}
+            >
+              <MoonIcon />
+            </motion.span>
+          ) : (
+            <motion.span
+              key="sun"
+              initial={{ opacity: 0, rotate: 45, scale: 0.6 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              exit={{ opacity: 0, rotate: -45, scale: 0.6 }}
+              transition={{ duration: 0.18 }}
+            >
+              <SunIcon />
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </button>
   );
 };
 

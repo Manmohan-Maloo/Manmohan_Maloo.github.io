@@ -1,12 +1,5 @@
 import { motion } from "framer-motion";
-
-interface ButtonProps {
-  children: React.ReactNode;
-  onClick?: () => void;
-  className?: string;
-  type?: "button" | "submit" | "reset";
-  ariaLabel?: string;
-}
+import type { ButtonProps } from "../../types/components";
 
 const Button: React.FC<ButtonProps> = ({
   children,

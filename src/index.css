@@ -1,35 +1,39 @@
 @import "tailwindcss";
 @import "./styles/theme.css";
 
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
+  overflow-x: hidden;
   font-family: var(--font-sans);
   background-color: var(--color-surface-dark);
   color: var(--color-text-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-html {
-  scroll-behavior: smooth;
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #07050e; }
+::-webkit-scrollbar-thumb { background: #3d3062; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+.light ::-webkit-scrollbar-track { background: #fef9f3; }
+.light ::-webkit-scrollbar-thumb { background: rgba(109, 40, 217, 0.22); }
+.light ::-webkit-scrollbar-thumb:hover { background: rgba(109, 40, 217, 0.45); }
+
+/* ── View Transition: day ↔ night circular sweep ── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #04070f;
-}
-::-webkit-scrollbar-thumb {
-  background: #2d1d6e;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #7c3aed;
-}
-
+/* ── Marquee ── */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -40,24 +44,45 @@ html {
   animation: marquee 70s linear infinite;
 }
 
-/* ── Light mode fixes ── */
-
-/* All white-opacity borders become a visible dark outline */
-.light [class*="border-white"] {
-  border-color: rgba(15, 23, 42, 0.12) !important;
+/* ── Dot grid — violet-tinted in dark, amber-tinted in light ── */
+.bg-dot-grid {
+  background-image: radial-gradient(circle, rgba(180,157,250,0.09) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.light .bg-dot-grid {
+  background-image: radial-gradient(circle, rgba(26,15,5,0.08) 1px, transparent 1px);
 }
 
-/* White-opacity card / pill / glass backgrounds get a proper light surface */
+/* ── Float animation ── */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+.animate-float      { animation: float-y 5s ease-in-out infinite; }
+.animate-float-slow { animation: float-y 7s ease-in-out infinite; }
+
+/* ── Contact animated border: solid color cycles between brand ↔ accent ── */
+@keyframes border-cycle {
+  0%, 100% { background: var(--color-brand); }
+  50%       { background: var(--color-accent); }
+}
+.animated-border-wrap {
+  padding: 1.5px;
+  border-radius: 20px;
+  animation: border-cycle 4s ease-in-out infinite;
+}
+
+/* ── Blinking cursor for code editor ── */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink { animation: cursor-blink 1s step-end infinite; }
+
+/* ── Light mode: flip white-opacity utilities to dark-opacity ── */
 .light [class*="bg-white/"] {
-  background-color: rgba(255, 255, 255, 0.55) !important;
+  background-color: rgba(26, 15, 5, 0.05) !important;
 }
-
-/* Ghost / secondary buttons need a real border in light mode */
-.light [class*="border-white/[0.12]"],
-.light [class*="border-white/[0.10]"] {
-  border-color: rgba(15, 23, 42, 0.20) !important;
+.light [class*="border-white/"] {
+  border-color: rgba(26, 15, 5, 0.10) !important;
 }
-
-/* Scrollbar */
-.light ::-webkit-scrollbar-track { background: #e8eef9; }
-.light ::-webkit-scrollbar-thumb { background: rgba(124, 58, 237, 0.30); }
